@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Premium Casino</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="balance-container">
+                <span class="balance-label">Баланс</span>
+                <div class="balance-amount">
+                    <span id="balance">0.00</span> USDT
+                </div>
+            </div>
+            <button class="refresh-btn" onclick="loadBalance()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Game Selection -->
+            <div class="game-selector">
+                <button class="game-tab active" data-game="slots">🎰 Слоты</button>
+                <button class="game-tab" data-game="roulette">🎲 Рулетка</button>
+            </div>
+
+            <!-- Slots Game -->
+            <div id="slots-game" class="game-container active">
+                <div class="slots-machine">
+                    <div class="slots-display" id="slots-display">
+                        <div class="reel">🎰</div>
+                        <div class="reel">🎰</div>
+                        <div class="reel">🎰</div>
+                    </div>
+                </div>
+                <button class="spin-btn" onclick="playSlots()">
+                    <span class="btn-text">Крутить</span>
+                    <span class="btn-bet">5 USDT</span>
+                </button>
+            </div>
+
+            <!-- Roulette Game -->
+            <div id="roulette-game" class="game-container">
+                <div class="roulette-wheel">
+                    <div class="roulette-ball" id="roulette-ball"></div>
+                    <div class="roulette-numbers" id="roulette-numbers"></div>
+                </div>
+                <button class="spin-btn" onclick="playRoulette()">
+                    <span class="btn-text">Крутить колесо</span>
+                    <span class="btn-bet">5 USDT</span>
+                </button>
+            </div>
+
+            <!-- Controls -->
+            <div class="bet-controls">
+                <button class="bet-btn" data-bet="0.1">0.1 USDT</button>
+                <button class="bet-btn" data-bet="1">1 USDT</button>
+                <button class="bet-btn active" data-bet="5">5 USDT</button>
+                <button class="bet-btn" data-bet="10">10 USDT</button>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="showTab('games')">
+                <span>🎮</span>
+                <span>Игры</span>
+            </button>
+            <button class="nav-item" onclick="showTab('stats')">
+                <span>📊</span>
+                <span>Статистика</span>
+            </button>
+            <button class="nav-item" onclick="showTab('leaderboard')">
+                <span>🏆</span>
+                <span>Топ</span>
+            </button>
+        </nav>
+
+        <!-- Stats Tab -->
+        <div id="stats-tab" class="tab-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value" id="games-count">0</span>
+                    <span class="stat-label">Игр</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="total-bet">0.00</span>
+                    <span class="stat-label">Ставок</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="total-win">0.00</span>
+                    <span class="stat-label">Выигрыш</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div id="leaderboard-tab" class="tab-content">
+            <div class="leaderboard-list" id="leaderboard-list">
+                <div class="leaderboard-item">
+                    <div class="leaderboard-rank">🥇</div>
+                    <div class="leaderboard-info">
+                        <div class="leaderboard-name">Загрузка...</div>
+                        <div class="leaderboard-profit">0 USDT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
